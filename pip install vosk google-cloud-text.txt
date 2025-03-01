@@ -1,0 +1,1 @@
+pip install vosk google-cloud-texttospeech

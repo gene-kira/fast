@@ -1,0 +1,22 @@
+pip install pygame
+
+pip install pygame opencv-python-headless numpy scikit-learn tensorflow
+
+python -m pip install pygame opencv-python-headless numpy scikit-learn tensorflow
+
+pip install pygame opencv-python-headless numpy scikit-learn tensorflow object-detection
+
+git clone https://github.com/tensorflow/models.git
+pip install protobuf==3.20.*
+protoc object_detection/protos/*.proto --python_out=.
+
+pip install .
+
+pip install pygame opencv-python-headless numpy scikit-learn tensorflow object-detection keras
+
+
+
+
+
+
+

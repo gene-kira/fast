@@ -1,0 +1,6 @@
+pip install torch moviepy tqdm opencv-python-headless
+
+
+pip install flask kafka-python spacy networkx beautifulsoup4 requests transformers visdom elasticsearch logstash_formatter
+python -m spacy download en_core_web_sm
+
