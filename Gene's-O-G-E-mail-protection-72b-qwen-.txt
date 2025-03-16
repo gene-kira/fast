@@ -1,0 +1,20 @@
+Explanation
+Email Fetching:
+The script fetches unread emails from the specified email account using the imbox library.
+Feature Extraction:
+Extracts features such as sender's email, subject, body, and attachments from each email.
+Contact List Verification:
+A placeholder function get_contact_list() is used to fetch the user's contact list. In a real scenario, this would be fetched from an email provider or a file.
+Pre-scan Email:
+The pre_scan_email function checks if the sender is in the contact list and performs additional checks for malicious content.
+Sandbox Environment:
+A sandbox environment is set up to open emails safely.
+Model Training:
+Functions to train models with enhanced hyperparameter tuning using Random Forest, SVM, and LSTM with Attention.
+Model Loading and Saving:
+Functions to load and save trained models.
+Predict Using Models:
+Predicts if an email is malicious using the trained models.
+Move to Spam:
+Moves emails to the spam folder if they are identified as malicious or not in the contact list
+This updated script ensures that your computer is always protected from harm, with a strict rule to never let any email load, run, or control your system.
