@@ -1,0 +1,22 @@
+Explanation:
+Library Installation:
+
+The install_libraries function ensures that psutil, requests, and scikit-learn are installed if they are not already present.
+System Monitoring:
+
+We use psutil to monitor network connections and system processes.
+An Isolation Forest model from scikit-learn is used for anomaly detection. The contamination parameter is set to 0.1, meaning that about 10% of the data is expected to be anomalies.
+Anomaly Detection:
+
+Collect initial data by monitoring network statistics and process information.
+Train the Isolation Forest model with the collected initial data.
+Continuously monitor the system and predict if current behavior is anomalous.
+Isolation and Shutdown:
+
+If an anomaly is detected, identify the rogue AI process by its name.
+Suspend and then kill the identified process to stop it from causing further harm.
+Main Function:
+The script starts by ensuring all necessary libraries are installed.
+It sets up a monitoring system using psutil and an Isolation Forest model to detect anomalies.
+Once an anomaly is detected, it identifies the rogue AI process by its name and isolates and shuts it down.
+This script will continuously monitor your system and take action if a rogue AI is detected. Adjust the sleep interval as needed based on your specific requirements for monitoring frequency.

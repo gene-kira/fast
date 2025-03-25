@@ -1,0 +1,21 @@
+Explanation
+Library Installation:
+
+The install_library function checks if the required libraries (scapy and psutil) are installed. If not, it installs them using pip.
+Network Monitoring:
+
+The sniff function from scapy is used to monitor UDP traffic on ports 4242 (eMule KAD) and 4662 (eDonkey P2P).
+The packet_callback function processes each packet and checks if it matches the specified ports. If a match is found, it prints the details and calls find_process_by_port.
+Process Management:
+
+The find_process_by_port function iterates through all running processes and their connections to find any process using the specified port.
+If a process is found, its PID is returned.
+Termination and Removal:
+
+The terminate_and_remove_program function terminates the identified process using psutil.
+It then calls remove_program_files to delete the associated program files and directories.
+File Operations:
+
+The remove_program_files function deletes the specified program files and directories based on the program name.
+It uses a dictionary to map program names to their respective file paths, which are expanded and removed if they exist.
+This script ensures that all necessary libraries are installed, monitors network traffic for eMule KAD and eDonkey P2P, identifies and terminates the associated processes, and removes the program files
