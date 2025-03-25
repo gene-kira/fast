@@ -1,0 +1,13 @@
+To add programs to startup in Windows 11, you can create a shortcut to the program's executable file and place it in the Startup folder. You can also use the Task Manager or Settings to configure startup apps. 
+Using the Startup folder 
+Open the Start menu
+Find the app you want to add
+Right-click the app and select Open file location
+Press the Windows logo key + R
+Type shell:startup
+Select OK to open the Startup folder
+Copy and paste the shortcut to the app from the file location to the Startup folder
+
+
+
+note you will  need to install python 3.11 first 
