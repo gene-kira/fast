@@ -1,0 +1,16 @@
+Explanation
+Auto-Install Libraries: The install_libraries function checks if each library in the required_libraries list is installed. If not, it uses pip to install the missing libraries.
+
+Get Network Interfaces: The get_network_interfaces function retrieves all network interfaces except the loopback interface (lo).
+
+Scan Network: The scan_network function uses nmap to perform a ping scan on the specified network (e.g., 192.168.0.0/24). It returns a list of all hosts that responded.
+
+Get IoT Devices: The get_iot_devices function filters the scanned hosts to identify devices with MAC addresses, which are likely to be IoT devices.
+
+Monitor Traffic: The monitor_traffic function uses iptables to monitor network traffic for each identified IoT device. It checks if the number of packets exceeds a defined threshold (SUSPICIOUS_TRAFFIC_THRESHOLD). If so, it marks the device as suspicious.
+
+Isolate Device: The isolate_device function adds iptables rules to block all incoming and outgoing traffic for the specified IP address.
+
+Main Loop: The script continuously scans the network interfaces at a specified interval (SCAN_INTERVAL). For each interface, it performs a network scan, identifies IoT devices, monitors their traffic, and isolates any suspicious devices.
+
+This comprehensive script will help you protect your system from compromised IoT devices by automatically identifying, monitoring, and isolating them.
