@@ -1,0 +1,33 @@
+Explanation:
+Import Necessary Libraries: The script imports all required libraries for network monitoring, system resource management, file system monitoring, and machine learning.
+
+Initialize the AI Bot:
+
+port_range: Defines the range of ports to monitor.
+open_ports: A set to store currently open ports.
+rogue_programs: A set to store detected rogue programs.
+network_traffic: A list to store network traffic data for analysis.
+if_model: An Isolation Forest model from scikit-learn for anomaly detection.
+Network Monitoring:
+
+Use pyshark to capture and analyze network packets in real-time.
+The process_packet method captures TCP packets and stores source and destination ports in network_traffic.
+System Resource Management:
+
+Monitor CPU and memory usage using psutil.
+Detect rogue programs by checking if the process name starts with 'malicious' or if the CPU usage is above 50%.
+File System Monitoring:
+
+Use watchdog to monitor file changes.
+The FileChangeHandler class monitors file modifications and checks for suspicious content.
+Machine Learning for Anomaly Detection:
+
+Collect system resource data (CPU and memory usage) over 100 samples.
+Train an Isolation Forest model using the collected data to detect anomalies in system resources.
+Continuous Monitoring:
+
+Continuously monitor system resources for anomalies.
+If an anomaly is detected, print a message indicating that an anomaly has been found.
+Port Management:
+
+Scan all ports in the specified range and close any open ports to ensure the system is secure.
