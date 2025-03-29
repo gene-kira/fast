@@ -1,0 +1,30 @@
+Explanation:
+Install Necessary Libraries:
+
+The install_libraries function ensures that all required libraries are installed using pip.
+Set Up Network Monitoring:
+
+The monitor_network function uses the scapy library to capture and analyze network packets on a specified interface (e.g., 'eth0').
+The packet_callback function logs the source IP, destination IP, source port, destination port, and protocol of each packet.
+Log Packet Details to a CSV for Analysis:
+
+The log_packet function logs the details of each packet into a CSV file named network_log.csv.
+Load and Preprocess the Network Log:
+
+The load_and_preprocess_data function loads the network log data from the CSV file.
+It converts the protocol to categorical values for better machine learning processing.
+It fills NaN values for ports with 0.
+It normalizes the data using StandardScaler.
+Train a Machine Learning Model to Identify Threats:
+
+The train_threat_classifier function splits the data into training and testing sets.
+It initializes a RandomForestClassifier and trains it on the training data.
+Evaluate the Model and Block Threats:
+
+The evaluate_and_block_threats function predicts threats using the trained model.
+It identifies malicious IP addresses and ports by checking the predictions.
+It blocks the identified malicious IPs and ports using iptables.
+Main Function:
+
+The main function integrates all the steps to set up network monitoring, train a threat classifier, and block identified threats.
+This script provides a comprehensive approach to setting up a smart AI system that monitors your network, identifies potential threats, and blocks them by managing IP addresses and ports using iptables.
