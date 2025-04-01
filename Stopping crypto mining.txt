@@ -1,0 +1,25 @@
+Explanation:
+Automatic Library Loading:
+
+The load_libraries function ensures all necessary libraries are imported. It handles potential import errors by printing a message if any library fails to load.
+Feature Extraction:
+
+The get_running_processes function retrieves a list of all running processes with relevant features: PID, name, CPU percent, memory usage, and network connections.
+The extract_features function converts the collected process information into a feature vector suitable for machine learning. It includes:
+A binary flag indicating if the process name is in the known miners list.
+CPU percent.
+Memory usage (converted to MB).
+Number of network connections.
+Machine Learning Model Training:
+
+The train_model function trains a RandomForestClassifier model using the collected features and labels. It splits the data into training and testing sets, trains the model, and evaluates its accuracy.
+Model Deployment:
+
+The is_crypto_miner function uses the trained model to classify a process as a crypto miner.
+The terminate_crypto_miner function terminates the identified crypto mining processes.
+The monitor_and_terminate function continuously monitors running processes, extracts features, and classifies them using the trained model. It then terminates any processes classified as miners.
+Training Data Collection:
+
+A dataset of known miner and non-miner processes is created to train the model. This includes process names, CPU percent, memory usage, network connections, and a binary label indicating if the process is a miner.
+The OneHotEncoder from sklearn.preprocessing is used to convert categorical data (process names) into numerical features.
+By combining these steps, the script becomes more robust and adaptable, capable of detecting and terminating crypto mining processes with high accuracy.
