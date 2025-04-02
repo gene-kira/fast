@@ -1,0 +1,36 @@
+Explanation
+Auto Loader:
+
+The script automatically installs all necessary libraries using pip3.
+Machine Learning for Network Monitoring:
+
+Uses Scapy to capture and process network packets.
+Extracts features from the packets (source IP, destination IP, source port, destination port).
+Applies Isolation Forest machine learning model to detect anomalies in network traffic.
+Process Monitoring:
+
+Monitors running processes using psutil.
+Logs any process that is not in the list of trusted processes.
+System Hardening:
+
+Updates the system and software using apt and snap.
+Malware Scanning:
+
+Installs ClamAV if it is not already installed.
+Updates virus definitions using freshclam.
+Scans the entire system for malware using clamscan.
+Game Blocking:
+
+Reads the log file to check for any threats detected.
+Blocks the game from launching by killing its process if a threat is detected.
+File Deletion:
+
+Deletes infected files on the local system and other devices on the same network.
+Uses clamscan to scan the local system and other devices for malware.
+Deletes infected files using os.remove for local files and ssh for remote files.
+Running the Script
+To run this script, save it to a file named gaming_security.py. You can then execute it with Python:
+
+python3 gaming_security.py
+
+Ensure you have the necessary permissions to install and update software on your system. Also, make sure that ssh is configured to allow connections between devices on the same network for remote file deletion.
