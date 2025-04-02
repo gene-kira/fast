@@ -1,0 +1,22 @@
+Explanation:
+Auto-Loading Libraries:
+
+The script checks if the required libraries (requests, watchdog, and nvidia-ml-py3) are installed and installs them if they are not.
+CPU Monitoring:
+
+Continuously monitors CPU usage.
+If CPU usage exceeds 80%, it triggers an action to notify users via a wall message.
+Network Activity Monitoring:
+
+Monitors network connections.
+Detects suspicious connections, such as those not involving localhost or known IPs.
+Blocks suspicious IP addresses using iptables.
+File System Monitoring:
+
+Uses the watchdog library to monitor file system changes.
+Detects modifications to critical files and sets them to immutable.
+Memory Monitoring:
+
+Monitors running processes and their memory usage.
+Detects known backdoor signatures or suspicious processes with high memory usage.
+Kills detected malicious processes.
