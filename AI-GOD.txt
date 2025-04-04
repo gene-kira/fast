@@ -1,0 +1,84 @@
+Overview
+Forensic Analysis (forensic_analysis):
+
+Purpose: Detect malicious activity within a memory dump or file.
+Functionality:
+Reads the provided dump_file using a container and context from the v3 library.
+Iterates over tasks in the context to identify any task with a name that contains "malicious_pattern".
+If such a task is found, it prints an alert indicating malicious activity in the process.
+Automated Response System (AutomatedResponseSystem):
+
+Purpose: Automate responses to network and file threats.
+Functionality:
+Initialization:
+Sets up a quarantine directory where suspicious files can be moved.
+Creates the directory if it doesn't exist.
+Isolate and Respond (isolate_and_respond):
+Monitors network connections for specified source and destination ports.
+Terminates the process associated with the matching connection using psutil.
+Terminate Process (terminate_process):
+Uses psutil to terminate a specified process by its PID.
+Logs the termination action if successful.
+Scan and Quarantine (scan_and_quarantine):
+Scans a file for viruses using ClamdScan.
+If a virus is detected, moves the file to the quarantine directory.
+Threat Handling Functions:
+
+Handle Threat (handle_threat):
+Purpose: Terminate processes that are identified as threats.
+Functionality:
+Terminates a process using psutil.
+Logs the termination action if successful.
+Is Data Leak (is_data_leak):
+Purpose: Identify potential data leaks in network packets.
+Functionality:
+Checks if the packet has a Raw layer and if the length of the raw data is greater than 100 bytes.
+Handle Network Threat (handle_network_threat):
+Purpose: Handle detected data leaks by dropping the network packet.
+Functionality:
+Prints an alert indicating a data leak from the source to the destination IP addresses.
+Drops the packet and logs the action.
+Is Suspicious File (is_suspicious_file):
+Purpose: Identify suspicious files based on predefined criteria.
+Functionality:
+Checks if the file path contains the string "malware".
+Handle File Threat (handle_file_threat):
+Purpose: Delete detected suspicious files.
+Functionality:
+Removes the file from the file system and logs the action.
+Is Suspicious Drive (is_suspicious_drive):
+Purpose: Identify suspicious drives based on predefined criteria.
+Functionality:
+Checks if the drive's mount point contains the string "malware".
+Handle Drive Threat (handle_drive_threat):
+Purpose: Unmount and protect detected suspicious drives.
+Functionality:
+Unmounts the specified drive using os.system.
+Logs the action if successful.
+Is Suspicious Port (is_suspicious_port):
+Purpose: Identify suspicious network ports based on predefined criteria.
+Functionality:
+Checks if the port is in a list of known suspicious ports.
+Handle Port Threat (handle_port_threat):
+Purpose: Block incoming traffic to detected suspicious ports using iptables.
+Functionality:
+Adds an iptables rule to drop packets destined for the specified port.
+Memory Monitoring (monitor_memory):
+
+Purpose: Continuously monitor system memory for known backdoor signatures.
+Functionality:
+Iterates over all processes and their memory information using psutil.
+Checks each process against a list of known suspicious processes or if the RSS (Resident Set Size) is greater than 100MB.
+If a process is found to be suspicious, it prints an alert and takes action by terminating the process.
+Unified Action Handling (take_action):
+
+Purpose: Take specific actions based on the type of threat detected.
+Functionality:
+CPU:
+Sends a system message indicating high CPU usage using wall.
+Network:
+Adds an iptables rule to drop packets from the specified source IP address.
+File:
+Sets the immutable attribute on the file to prevent further modifications.
+Memory:
+Terminates the suspicious process with a -9 signal.
