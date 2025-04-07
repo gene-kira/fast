@@ -1,0 +1,43 @@
+This comprehensive script is designed to protect the core of your system by monitoring and analyzing processes in real-time, ensuring that no unauthorized or malicious activities go undetected. Here’s an overview of what the script does:
+
+Logging Initialization:
+
+Sets up logging to record all significant events and warnings for later analysis.
+Threat Intelligence Scraping:
+
+Continuously scrapes threat intelligence from multiple sources (e.g., 
+https://example.com/threats
+
+, 
+https://threatintelligence.net
+
+).
+Identifies and adds new threats to a local database (threat_intelligence.csv).
+Behavioral Data Collection:
+
+Collects detailed information about running processes including process ID, name, username, command line arguments, network connections, open files, and memory usage.
+This data is used for both real-time monitoring and training the machine learning model.
+Machine Learning Model Training:
+
+Trains a RandomForestClassifier using collected behavioral data to detect suspicious activities.
+Features include:
+Process name checks for common AI-related names (e.g., python, java).
+Command line argument checks for AI-related keywords.
+Network connection checks for established TCP connections.
+File access pattern checks (number of open files).
+Memory usage checks (high memory consumption).
+Real-Time Process Monitoring:
+
+Continuously monitors all running processes to detect suspicious activities in real-time.
+Uses the trained machine learning model to predict if a process is likely to be an AI imposter or malicious activity.
+Logs warnings for any detected suspicious processes.
+File Integrity Checks:
+
+Updates a list of known safe file hashes (known_safe_hashes.txt).
+Verifies the integrity of critical system files against this list to ensure no tampering has occurred.
+Threat Link Identification:
+
+Determines if a scraped link is likely to be a threat based on keywords (e.g., threat, malware).
+Safe Hash Verification:
+
+Verifies the integrity of critical system files by checking their hashes against the list of known safe hashes.
