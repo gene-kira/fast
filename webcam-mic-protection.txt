@@ -1,0 +1,23 @@
+Explanation
+Install Libraries: The install_libraries function checks if the required libraries (psutil, pyaudio, and opencv-python) are installed and installs them if necessary.
+
+Initialize Script: The initialize function clears the console and prints an initialization message.
+
+Monitor Webcam:
+
+Uses OpenCV to capture frames from the webcam.
+If a frame is not captured successfully, it indicates unauthorized access, and the script kills a suspicious process (e.g., capstone.exe).
+Monitor Microphone:
+
+Uses PyAudio to open an input stream for the microphone.
+If no data is received from the microphone, it indicates unauthorized access, and the script kills a suspicious process.
+Monitor Processes:
+
+Uses psutil to iterate over active processes.
+Checks if the process name matches any known suspicious processes (e.g., malware.exe, rogue.exe, suspicious_program.exe).
+Kills the detected suspicious process using a system command.
+Main Function:
+
+Starts all monitoring tasks in separate threads to ensure they run concurrently without blocking each other.
+The main thread runs the process monitoring function.
+This script ensures that your system remains secure by continuously monitoring for unauthorized access to your webcam and microphone, as well as detecting and terminating suspicious processes
