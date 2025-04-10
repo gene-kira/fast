@@ -1,0 +1,149 @@
+This script is designed to enhance system security and monitor for potential threats in real-time. Here’s a breakdown of its key functionalities:
+
+Security Measures and Anomaly Detection
+Ad Server Blocking:
+
+The script blocks known ad servers by updating the local hosts file or firewall rules.
+block_ad_servers(ad_servers)
+in_memory_ad_blocking(ad_servers)
+
+Prevent External Commands:
+
+It prevents unauthorized external commands from being executed on your system.
+prevent_external_commands()
+
+Port Scanning and Anomaly Detection:
+
+The script scans open ports on a specified target IP address and detects any anomalous behavior using a machine learning model.
+while True:
+    open_ports = scan_ports(target_ip)
+    detect_and_terminate_anomalies(open_ports, model, unique_ports, pca)
+
+P2P Connections and IP Tracking:
+
+It monitors for peer-to-peer (P2P) connections and tracks suspicious IP addresses.
+detect_p2p_connections()
+track_ip_addresses()
+
+Local Program Monitoring:
+
+The script monitors local programs and their behavior, such as CPU and memory usage, to identify potential threats.
+monitor_local_programs()
+
+Email Attachment Monitoring:
+
+It checks email attachments for any suspicious files and quarantines them if necessary.
+email_path = 'path_to_email.eml'  # Replace with the path to the email file
+monitor_email_attachments(email_path)
+
+Threat Intelligence Scraping
+Scrape Threat Intelligence:
+The script continuously scrapes threat intelligence from specified URLs at a defined interval.
+def scrape_threat_intelligence(initial_urls, interval):
+    while True:
+        for url in initial_urls:
+            try:
+                response = requests.get(url)
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.content, 'html.parser')
+                    threats = soup.find_all('a', class_='threat')
+                    with open(threat_intelligence_file, 'a') as f:
+                        for threat in threats:
+                            f.write(f"{threat.text}\n")
+            except Exception as e:
+                logging.error(f"Error scraping threat intelligence from {url}: {e}")
+        time.sleep(interval)
+
+Update Known Safe Hashes
+Update Known Safe Hashes:
+The script updates a list of known safe file hashes to prevent false positives.
+def update_known_safe_hashes():
+    known_hashes = set()
+    if os.path.exists(known_safe_hashes_file):
+        with open(known_safe_hashes_file, 'r') as f:
+            for line in f:
+                known_hashes.add(line.strip())
+
+    critical_files = [
+        '/bin/bash',
+        '/usr/bin/python3',
+        # Add more critical files here
+    ]
+
+    if get_os() == 'Windows':
+        critical_files.extend([
+            'C:\\Windows\\System32\\cmd.exe',
+            'C:\\Windows\\System32\\python.exe',
+            # Add more Windows critical files here
+        ])
+
+    for file in critical_files:
+        try:
+            with open(file, 'rb') as f:
+                content = f.read()
+                file_hash = hashlib.md5(content).hexdigest()
+                known_hashes.add(file_hash)
+        except Exception as e:
+            logging.error(f"Error calculating hash for {file}: {e}")
+
+Main Function to Initialize and Start Monitoring
+Initialize the Script:
+Load configuration, set up Kafka consumers and producers, load the machine learning model, scrape threat intelligence, train the model, update known safe hashes, and start monitoring processes.
+def main():
+    config = load_configuration()
+    os = get_os()
+    commands = get_os_specific_commands(os)
+
+    # Initialize Kafka consumers and producers
+    initialize_kafka()
+
+    # Load the machine learning model
+    global model
+    try:
+        model = load_model()
+    except Exception as e:
+        logging.error(f"Error loading machine learning model: {e}")
+
+    # Scrape threat intelligence from multiple sources
+    initial_urls = ['https://example.com/threats', 'https://threatintelligence.net']
+    scrape_threat_intelligence(initial_urls, config['scrape_interval'])
+
+    # Train the machine learning model using threat intelligence data
+    train_model(THREAT_INTELLIGENCE_FILE)
+
+    # Update the list of known safe hashes
+    update_known_safe_hashes()
+
+    # Start monitoring processes and files
+    monitor_processes(config['monitor_interval'])
+
+if __name__ == "__main__":
+    main()
+
+Continuous Monitoring
+Continuous Monitoring:
+The script continuously monitors system processes, open ports, P2P connections, IP addresses, local programs, and email attachments at defined intervals.
+while True:
+    # Block ad servers and prevent external commands
+    block_ad_servers(ad_servers)
+    in_memory_ad_blocking(ad_servers)
+    prevent_external_commands()
+
+    # Scan for open ports and detect anomalies
+    open_ports = scan_ports(target_ip)
+    detect_and_terminate_anomalies(open_ports, model, unique_ports, pca)
+
+    # Detect P2P connections and track IP addresses
+    detect_p2p_connections()
+    track_ip_addresses()
+
+    # Monitor local programs
+    monitor_local_programs()
+
+    # Monitor email attachments for suspicious files
+    email_path = 'path_to_email.eml'  # Replace with the path to the email file
+    monitor_email_attachments(email_path)
+
+    time.sleep(60)  # Check every 60 seconds
+
+This script is a comprehensive security tool that continuously monitors and protects your system from various threats, including ad servers, external commands, open ports, P2P connections, IP tracking, local program behavior, and email attachments. It uses machine learning to detect anomalies and ensures real-time protection for your system.
