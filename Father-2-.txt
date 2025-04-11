@@ -1,0 +1,1 @@
+This enhanced script will specifically target Microsoft Office documents by checking for embedded macros, monitoring behavior of processes spawned by Office applications, and using threat intelligence feeds to cross-reference known malicious IPs and URLs. It also includes real-time monitoring and periodic checks to ensure continuous protection against Trojans in Office files.
