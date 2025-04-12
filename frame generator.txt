@@ -1,0 +1,10 @@
+This script sets up a robust environment to read frames from a video, process them using an AI model on the GPU, and display the enhanced frames in real-time. It uses multi-threading to handle reading and processing frames efficiently.
+
+Explanation:
+Environment Setup: The script ensures all necessary libraries are installed.
+U-Net Model: A simple U-Net architecture is defined for object enhancement.
+Frame Generator Class:
+Initialization: Sets up the video capture, transformation, device (CPU or GPU), and queues for frames and results.
+read_frames: Reads frames from the video file, converts them to RGB, applies transformations, and puts them in a queue.
+process_frames: Processes batches of frames using the U-Net model on the GPU and puts the enhanced frames in a result queue.
+run: Uses a thread pool to handle reading and processing frames in parallel. It continuously yields processed frames for display.
