@@ -1,0 +1,19 @@
+Explanation:
+Device Detection:
+
+list_usb_devices(): This function uses pyusb to list all connected USB devices, printing their product name, vendor ID, and product ID.
+CUDA Core Detection:
+
+detect_cuda_gpus(): This function initializes the NVIDIA Management Library (NVML) using pynvml to detect CUDA-capable GPUs. It returns a list of tuples containing the GPU index, name, and UUID.
+Check CUDA on USB:
+
+check_cuda_on_usb(cuda_gpus): This function cross-references the detected CUDA-capable GPUs with the list of USB devices to identify which GPUs are connected via USB.
+Utilization:
+
+use_cuda_cores(cuda_on_usb): This function uses PyTorch to perform a simple matrix multiplication on each detected CUDA core. It ensures that only available GPUs are used for computation.
+Running the Script
+To run this script, save it as a Python file (e.g., cuda_usb_scanner.py) and execute it:
+
+python cuda_usb_scanner.py
+
+This script will list all connected USB devices, detect CUDA-capable GPUs, check if these GPUs are connected via USB, and then perform a simple computational task using the detected CUDA cores.
