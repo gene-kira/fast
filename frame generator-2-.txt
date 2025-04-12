@@ -1,0 +1,17 @@
+Explanation:
+Environment Setup: The script ensures all necessary libraries are installed.
+U-Net Model:
+A simple U-Net architecture is defined for object enhancement, which includes convolutional and up-convolutional layers to capture and reconstruct features at different scales.
+Frame Generator Class:
+Initialization: Sets up the video capture, transformation, device (CPU or GPU), and queues for frames and results.
+read_frames: Reads frames from the video file, converts them to RGB, applies transformations, and puts them in a queue.
+process_frames: Processes batches of frames using the U-Net model on the GPU and puts the enhanced frames in a result queue.
+run: Uses a thread pool to handle reading and processing frames in parallel. It continuously yields processed frames for display until all frames have been processed.
+Main Loop:
+The main loop initializes the FrameGenerator and iterates over the enhanced frames, displaying them using OpenCV without requiring user intervention to stop the generator.
+Initialization: Initializes the frame generator with the video path and batch size.
+Loop: Continuously yields enhanced frames from the result queue.
+Enhancements:
+Memory Management: Efficiently manages memory by clearing unused frames and results from the queues.
+Thread Pool: Uses a thread pool to handle reading and processing frames in parallel, ensuring smooth and efficient operation.
+Continuous Display: Displays the enhanced frames continuously until all frames have been processed.
