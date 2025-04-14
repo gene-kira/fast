@@ -1,0 +1,23 @@
+Explanation:
+Install Required Libraries: The script starts by ensuring that psutil is installed, which is essential for process management.
+Monitor System: This function integrates multiple checks to detect anomalies in the system:
+Anomaly Detection: Uses a trained model (clf) to predict if current data indicates an anomaly.
+Isolate and Shutdown Rogue Processes: Identifies and isolates rogue processes, then shuts them down.
+Critical Files and Thresholds:
+Defines critical system files and thresholds for network connections, file access, and memory usage.
+Essential Processes for System Lockdown: Lists essential processes that should not be terminated during a lockdown.
+Monitor Email and Attachments:
+Scans emails for attachments, particularly those with suspicious subjects like 'invoice' or 'payment'.
+Saves non-text files to a specified directory and runs a virus scan on them.
+Monitor Network Ports:
+Scans all open ports on the system.
+Checks for backdoors by identifying common backdoor ports (21, 22, 80, 443, 3389) and isolates processes using these ports.
+Main Function Loop
+The main function runs in a loop to continuously monitor the system:
+
+Detect Anomalies: Uses the clf model to detect anomalies.
+Isolate and Shutdown Rogue Processes: Identifies rogue processes and takes action to isolate and terminate them.
+Scan Open Ports: Continuously scans for open ports and checks for backdoors.
+Monitor Email and Attachments: Fetches emails, scans attachments, and runs virus scans on non-text files.
+Sleep Interval
+The loop sleeps for 60 seconds between each check to reduce CPU usage while maintaining a reasonable frequency of monitoring.
