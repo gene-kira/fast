@@ -1,0 +1,38 @@
+This script integrates multiple functionalities to ensure the security and integrity of your system. It monitors files, network connections, data leaks, P2P and eMule networks, and USB/network drives for rogue or bad programs.
+
+Key Components:
+File Monitoring: Uses a file system watcher to detect new or modified files.
+Data Leakage Prevention: Scans emails and files for personal data using regular expressions.
+Network Security: Blocks P2P and eMule network connections, monitors network connections for suspicious activity.
+USB and Network Drive Monitoring: Continuously checks USB and network drives for rogue or bad programs.
+Detailed Steps:
+File Monitoring:
+
+Uses watchdog to monitor file system changes.
+Checks if files are password-protected or encrypted, and deletes them if so.
+Uses an AI-based malware scanner (clamscan) to check for malware.
+Data Leakage Prevention:
+
+Scans emails and files for personal data like SSNs and credit card numbers using regular expressions.
+Masks detected personal data in-place.
+Network Security:
+
+Blocks common P2P and eMule ports using socket and iptables.
+Monitors network connections for suspicious activity, blocking any unknown or suspicious connections.
+USB and Network Drive Monitoring:
+
+Continuously checks USB and network drives for rogue or bad programs.
+Deletes password-protected or encrypted files found in these drives.
+Running the Script
+The script is designed to run continuously in the background, ensuring that your system remains secure from various threats. It uses threading to handle multiple tasks concurrently without blocking each other.
+
+This script ensures that your system is continuously monitored for security threats, including file integrity, network connections, and data leaks. It also restricts access to the camera and microphone to only trusted applications.
+
+Key Enhancements
+Elevated Privileges: The script will elevate itself to root privileges if not already running as root.
+Efficient Large File Handling: The MD5 hash function is optimized for large files, reading in chunks of 1 MB at a time.
+File Type Checking: The script checks the file type by reading the first few bytes and handles different file types accordingly (ZIP, GZ, PDF, DOCX).
+AI Impersonation Defense: The script blocks P2P and eMule ports to prevent AI impersonators from infiltrating the system.
+Continuous Monitoring: The script uses threading to ensure that all monitoring tasks run concurrently without blocking each other.
+Running the Script
+To run this script, save it to a file named security_monitor.py and execute it with Python 3. Ensure you have root access or use sudo to elevate privileges:
