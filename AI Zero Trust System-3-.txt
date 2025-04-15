@@ -1,0 +1,27 @@
+This script provides a comprehensive zero-trust system that monitors and ensures the security of your environment. It includes file integrity checks, PEB monitoring, kernel module inspection, and process monitoring for unauthorized activities. Each component is designed to detect and mitigate potential threats to your system's operation.
+
+Key Features:
+File Integrity Checks: Ensures that no rogue or hostile files are present and that system files have not been tampered with.
+PEB Monitoring: Continuously checks the Process Environment Block (PEB) for any suspicious activities, such as invalid environment blocks or unexpected strings.
+Kernel Module Inspection: Detects unauthorized kernel modules and terminates them to prevent backdoors.
+Process Monitoring: Identifies processes running under nt-authority\system and ensures they are trusted.
+Implementation:
+File Integrity Checks:
+
+Password Protection Check: Ensures that files with password protection are identified and handled appropriately.
+Encryption Check: Detects encrypted files and handles them by deleting if necessary.
+MD5 Hashing: Computes MD5 hashes for all monitored files to detect changes.
+System File Integrity: Compares the current MD5 hash of system files against a known good hash. Restores the file if tampered.
+PEB Monitoring:
+
+Process Environment Block (PEB) Reading: Reads the PEB of each process to ensure it contains valid and expected values.
+Environment Block Validation: Checks for suspicious strings in the environment block that could indicate malicious activity.
+Kernel Module Inspection:
+
+Driver Enumeration: Enumerates all loaded kernel drivers and checks against a list of trusted drivers.
+Driver Unloading: Terminates any unauthorized kernel modules to prevent backdoors.
+Process Monitoring:
+
+Trusted Process List: Maintains a list of known trusted process PIDs.
+Process Termination: Identifies and terminates processes running under nt-authority\system that are not in the trusted list.
+This script ensures a robust zero-trust environment by continuously monitoring and validating the integrity of your system, ensuring it remains secure against rogue or hostile activities.
