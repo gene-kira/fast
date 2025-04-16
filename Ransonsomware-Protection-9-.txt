@@ -1,0 +1,102 @@
+Key Enhancements
+File Encryption Detection:
+
+Use watchdog to monitor for rapid changes in file sizes, especially in user directories.
+Check for files with known ransomware extensions (e.g., .medusa).
+Registry Modification Detection:
+
+Monitor the Windows registry for changes that are commonly associated with Medusa Ransomware, such as adding a value to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run.
+Fileless Techniques:
+
+Detect and monitor PowerShell scripts running in memory.
+Identify and terminate any suspicious processes spawned by known malicious programs.
+Security Software Disabling:
+
+Detect and prevent attempts to disable security software by monitoring for specific process names (e.g., antivirus.exe, firewall.exe).
+Implementation
+File System Monitoring:
+Use the watchdog library to monitor file changes in user directories. This will help detect rapid changes that are characteristic of ransomware.
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+def monitor_file_changes(dir):
+    class FileChangeHandler(FileSystemEventHandler):
+        def __init__(self):
+            self.file_changes = {}
+
+        def on_modified(self, event):
+            dir = os.path.dirname(event.src_path)
+            if dir in self.file_changes:
+                current_files = set(os.listdir(dir))
+                if len(current_files - self.file_changes[dir]) > 5:
+                    logging.warning(f"Rapid file changes detected in {dir}")
+                    terminate_process(os.getpid())
+            else:
+                self.file_changes[dir] = set(os.listdir(dir))
+
+    handler = FileChangeHandler()
+    observer = Observer()
+    observer.schedule(handler, dir, recursive=True)
+    observer.start()
+
+# Monitor user directories
+for dir in ['C:\\Users', 'D:\\Documents']:
+    monitor_file_changes(dir)
+
+Registry Monitoring:
+Use the winreg module to monitor registry changes that are commonly associated with Medusa Ransomware.
+def monitor_registry():
+    def on_registry_change(key):
+        try:
+            value, _ = winreg.QueryValueEx(key, 'Medusa')
+            if value == '1':
+                logging.warning("Medusa Ransonware detected in registry")
+                terminate_process(os.getpid())
+        except FileNotFoundError:
+            pass
+
+    key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', 0, winreg.KEY_ALL_ACCESS)
+    winreg.SetValueEx(key, 'Medusa', 0, winreg.REG_SZ, '1')
+    winreg.CloseKey(key)
+
+Security Software Monitoring:
+Monitor for specific process names that are commonly disabled by Medusa Ransomware.
+def monitor_security_software():
+    def on_security_change(process):
+        if process.name() in ['antivirus.exe', 'firewall.exe']:
+            logging.warning("Security software disabled by Medusa Ransomware")
+            subprocess.run(['taskkill', '/F', '/IM', process.name()])
+            subprocess.run(['sc', 'start', process.name()])
+
+    for proc in psutil.process_iter(['pid', 'name']):
+        if proc.info['name'] in ['antivirus.exe', 'firewall.exe']:
+            on_security_change(proc)
+
+Main Function
+async def main():
+    with MouseListener(on_click=on_click) as listener:
+        while True:
+            # Continuously monitor running processes
+            for proc in psutil.process_iter(['pid', 'name', 'exe']):
+                try:
+                    pid = proc.info['pid']
+                    program_path = get_program_path(pid)
+                    if is_malicious_program(program_path, pid):
+                        logging.warning(f"Medusa Ransomware detected: {program_path}")
+                        terminate_process(pid)
+                except (psutil.NoSuchProcess, psutil.AccessDenied) as e:
+                    logging.error(f"Error monitoring process {pid}: {e}")
+
+            # Monitor file changes in user directories
+            for dir in ['C:\\Users', 'D:\\Documents']:
+                monitor_file_changes(dir)
+
+            # Monitor registry modifications
+            monitor_registry()
+
+            # Monitor security software disabling
+            monitor_security_software()
+
+            await asyncio.sleep(1)
+
+This script provides a comprehensive approach to detecting and mitigating Medusa Ransomware by monitoring file changes, registry modifications, and attempts to disable security software
