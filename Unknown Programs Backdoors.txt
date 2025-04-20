@@ -1,0 +1,53 @@
+Explanation of the Script
+Global Variables:
+
+known_ips: Set to store known IP addresses.
+known_devices: Set to store known USB devices.
+known_processes: Set to store known processes.
+known_files: Set to store known files.
+Data Collection and Model Training:
+
+collect_baseline_data(duration=3600): Collects CPU, memory, and network traffic data over a specified duration (default is 1 hour).
+train_anomaly_detector(data): Trains an Isolation Forest model to detect anomalies in the collected data.
+Anomaly Detection:
+
+detect_anomalies(model, data): Uses the trained model to predict and return any anomalies in the current data.
+Alert System:
+
+send_voice_alert(message): Generates a voice alert using gTTS.
+send_email_alert(email, subject, message): Sends an email alert.
+trigger_alert(message, ip=None, program_name=None, filename=None): Constructs and sends both voice and email alerts with detailed information.
+Automated Responses:
+
+block_process(pid): Terminates a process by its PID.
+quarantine_file(file_path, quarantine_dir='/quarantine'): Moves a file to a quarantine directory.
+block_network_connection(ip): Adds an IP address to the hosts.deny file to block network connections.
+System Monitor:
+
+Initializes and starts threads for hardware monitoring, process monitoring, file system monitoring, and network monitoring.
+Hardware Monitoring: Continuously monitors CPU usage, memory usage, new USB devices, and network traffic.
+Process Monitoring: Tracks new processes and high resource usage.
+File System Monitoring: Monitors modifications and creations of files.
+Network Monitoring: Detects unusual network traffic.
+Detailed Implementation
+Hardware Monitoring:
+
+monitor_hardware: Continuously checks CPU and memory usage, detects new USB devices, and monitors network traffic using Scapy.
+If high CPU or memory usage is detected, it triggers an alert.
+For new USB devices, it adds them to the known devices set and triggers an alert.
+Process Monitoring:
+
+monitor_processes: Tracks all running processes and detects any that exceed resource thresholds.
+New processes are added to the known processes set.
+If a process exceeds 50% CPU or memory usage, it triggers an alert and terminates the process.
+File System Monitoring:
+
+on_modified and on_created: These methods of the FileMonitor class handle file modifications and creations.
+Adds new files to the known files set and triggers alerts for modified or created files.
+Network Monitoring:
+
+monitor_network: Continuously checks network connections for unusual traffic.
+If a connection involves an unknown IP address, it triggers an alert and blocks the IP by adding it to the hosts.deny file.
+Main Execution
+The script initializes all necessary components and starts monitoring threads.
+It continuously collects and analyzes data to detect and respond to backdoors in real-time
