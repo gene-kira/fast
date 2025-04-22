@@ -1,0 +1,8 @@
+Summary
+Install Dependencies: Ensure all required packages are installed using apt-get and pip.
+Configure iptables: Set up iptables to log network traffic with appropriate prefixes.
+Fetch Known Good IPs Periodically: Use a separate thread to fetch and update known good IPs every hour from an external API.
+Train the Machine Learning Model: Incorporate more features (e.g., time of day) and use XGBoost for better performance. The model is trained using historical data from the system logs.
+Persistent Storage for Logs: Store logs in an SQLite database for better querying and analysis.
+Real-time Monitoring with Background Processes: Use a background process to monitor network traffic continuously without blocking the main thread.
+Enhanced Email Notifications with Attachments: Include log files as attachments in emails for detailed analysis. The script sends a weekly report email with compressed logs and an alert email for any abnormal communication detected.
