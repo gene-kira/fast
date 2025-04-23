@@ -1,0 +1,24 @@
+Explanation
+Data Collection:
+
+The crawl_data function uses the requests library to fetch data from a specified URL.
+It then parses the HTML content using BeautifulSoup and extracts all paragraph (<p>) tags, converting them to text.
+Data Storage:
+
+The save_data function stores the collected texts in a SQLite database using SQLAlchemy. Each text is stored as a row in the data_entries table.
+Model Training:
+
+The train_model function initializes a BERT model for sequence classification and sets up a training loop using the Trainer class from the transformers library.
+It uses the TrainingArguments to configure the training process, including output directory, evaluation strategy, learning rate, batch size, number of epochs, and weight decay.
+Loading Data for Training:
+
+The load_data_for_training function queries the database for all entries and prepares a DataFrame suitable for model training.
+It extracts the text and sentiment scores from the database and converts them into labels (1 for positive sentiments, 0 for negative or neutral).
+Updating Sentiment Scores:
+
+The update_sentiment_scores function queries the database for entries that do not have a sentiment score yet.
+It uses a pre-trained sentiment analysis pipeline to calculate the sentiment scores and updates the database.
+Main Function:
+
+The main function orchestrates the entire process by first crawling data, then saving it, loading existing data for training, training the model, and finally updating any new entries with sentiment scores.
+This script ensures that all necessary components are included in a single file, making it easy to run and manage the entire process.
