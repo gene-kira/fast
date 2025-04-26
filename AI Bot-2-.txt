@@ -1,0 +1,27 @@
+The provided script initializes a comprehensive digital "guard dog" named Red Queen that monitors and secures system behavior, network traffic, port security, and online gaming processes, while also providing commands for lockdowns, process termination, and virus scans. Here’s an overview:
+
+Initialization: The script starts by ensuring all necessary libraries are installed (pip install), initializes a RabbitMQ connection for inter-process communication, and defines the IsolationForest model for anomaly detection.
+
+System Monitoring:
+
+Behavioral Data Collection: Continuously collects data on running processes including process ID, name, command line arguments, network connections, memory usage, and file access patterns.
+Anomaly Detection: Uses the IsolationForest model to detect suspicious activities based on predefined thresholds (AI-specific names, command-line keywords, established TCP connections, file access patterns, and memory usage).
+Network Monitoring:
+
+Network Traffic: Monitors all network connections for established TCP connections and logs any detected connections.
+Port Security:
+
+Port Scanning: Checks all 65,535 ports to identify open ports and blocks them using iptables to prevent unauthorized access.
+Online Gaming Processes:
+
+Gaming Process Monitoring: Continuously monitors processes related to online gaming platforms (Steam, EpicGames, Origin, Battle.net) for potential backdoors.
+Commands:
+
+Lockdown: Locks down critical system files by making them read-only and initiates monitoring threads for behavior, network traffic, ports, and gaming processes.
+Terminate Process: Terminates a specific process by name.
+Scan: Scans the root directory for known virus signatures and removes any detected viruses.
+Deep Scan: Recursively scans all files in a specified directory for virus signatures.
+Flask Web Server:
+
+Provides a web interface to monitor system, network, port, and gaming status via REST endpoints.
+To execute this script, ensure the environment has Python installed along with necessary permissions to modify system settings and access process data.
