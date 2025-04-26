@@ -1,0 +1,6 @@
+sudo apt-get update
+sudo apt-get install rabbitmq-server python3-pip
+pip3 install pika requests psutil scikit-learn udev flask
+
+sudo systemctl start rabbitmq-server
+sudo rabbitmq-plugins enable rabbitmq_management
