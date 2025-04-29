@@ -1,0 +1,56 @@
+This script is a comprehensive system monitor that leverages multiple threads to efficiently detect and mitigate potential security threats across various aspects of the system. Here’s a detailed breakdown of each component:
+
+1. Library Installation
+The script starts by ensuring that all necessary libraries are installed:
+
+watchdog: For file system monitoring.
+psutil: For process and network connection management.
+scapy: For network packet analysis (not directly used in this script but can be useful for advanced network monitoring).
+pywin32: For Windows-specific functionalities, including process and driver management.
+2. File Monitoring
+The file monitoring component uses the watchdog library to observe changes in a specified directory. It checks for modifications to files and ensures that any modified files are restored if they differ from their original state.
+
+FileMonitor Class:
+on_modified: This method is triggered when a file in the monitored directory is modified.
+is_password_protected: Checks if the file is password protected by attempting to read it.
+is_encrypted: Placeholder for checking if the file is encrypted (implementation details are left to the user).
+get_md5: Computes the MD5 hash of the file to identify changes.
+check_file: Verifies if the modified file is different from its original state and restores it if necessary.
+3. Network Monitoring
+The network monitoring component ensures that only trusted connections are allowed, blocking suspicious or untrusted connections.
+
+block_p2p_and_emule:
+
+Scans for P2P (Peer-to-Peer) and eMule connections on common ports (6346, 6347).
+Blocks any detected P2P/eMule connections by terminating the associated process.
+monitor_network_connections:
+
+Continuously monitors all network connections.
+Blocks connections to untrusted IP addresses.
+4. Data Leak Monitoring
+This component identifies processes that might be leaking sensitive data and terminates them.
+
+check_data_leaks:
+Monitors running processes for known data-leaking applications (e.g., Microsoft Office apps).
+Terminates any detected processes.
+5. Camera and Microphone Access Monitoring
+This component ensures that only trusted processes can access the camera and microphone.
+
+monitor_camera_mic_access:
+Continuously monitors all running processes.
+Identifies processes known to use the camera or microphone (e.g., Skype, Zoom).
+Terminates any detected processes.
+6. PEB Monitoring
+This component checks for anomalies in the PEB of each process to detect potential tampering.
+
+monitor_peb:
+Monitors all running processes.
+Reads the PEB of each process and checks for unexpected changes, such as invalid environment block pointers or suspicious strings.
+7. Kernel Module Inspection
+This component ensures that only trusted kernel modules are loaded by monitoring and unloading any untrusted drivers.
+
+check_kernel_modules:
+Enumerates all device drivers.
+Unloads any untrusted drivers by freeing the library handle associated with the driver.
+Main Function
+The main function initializes all components and starts them in separate threads for efficient parallel processing:
