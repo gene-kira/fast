@@ -1,0 +1,29 @@
+Explanation
+Initialize Environment and Dependencies:
+
+Ensure necessary libraries are installed for data processing, anomaly detection, and network communication.
+Load Data:
+
+The load_data function handles different file types (CSV and JSON) to load the data into a usable format.
+Anomaly Detection:
+
+Use Isolation Forest from scikit-learn to detect anomalies in numerical data.
+The contamination parameter is set to 0.01, meaning it expects 1% of the data to be anomalies.
+Behavioral Monitoring:
+
+Read a log file and count the frequency of specific actions.
+If an action occurs more than the threshold (5 times by default), it will be flagged as high frequency.
+System Integration and Security:
+
+Block suspicious IP addresses using iptables.
+Open sockets to listen on specified ports for incoming connections.
+Continuous Monitoring:
+
+The script continuously checks every minute for new data, re-detects anomalies, and monitors behavior.
+If new anomalies are detected or high-frequency actions are found, the script will log these events.
+This script now includes the following enhancements:
+
+Monitor System Files: Continuously checks for changes in critical system files by comparing their current hash with a stored hash.
+Protect Core Processes: Ensures that essential processes are running and restarts them if they stop unexpectedly.
+Secure File Permissions: Sets appropriate file permissions to prevent unauthorized modifications.
+These additional features will help ensure the integrity and security of the system core, making AI_Gene.py a more robust and secure AI agent.
