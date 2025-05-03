@@ -1,0 +1,13 @@
+Explanation of the Enhancements
+Voice Integration:
+
+We added a speak function that uses Google Text-to-Speech (gTTS) to convert text to speech and plays it using the playsound library.
+This function is called whenever an important event occurs, such as detecting high-frequency actions or changes in critical files.
+Reactivation of Processes:
+
+The protect_core_processes function now speaks a message when a process is not running and attempts to restart it using systemctl.
+Continuous Monitoring and Protection:
+
+The main loop checks every minute for changes in critical files, core processes, and behavior patterns.
+It uses the speak function to announce any significant events detected during each check.
+This script now has a robust mechanism for monitoring system integrity, detecting anomalies, and ensuring that critical services are running. It also provides voice alerts to make it more user-friendly and effective in its mission to protect and enhance the system.
