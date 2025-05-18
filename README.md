@@ -6,3 +6,5 @@ WE will be focusing on Artificial  General Intelligence using  Zed-10. The compu
 Technology is a useful servant, but a dangerous master
 
 this video today made me feel good    Vivaldi Summer in Rome   www.youtube.com/watch?v=-V2i1a4zGS8
+
+today we have our new S-Bit Technology  5-18-2025
