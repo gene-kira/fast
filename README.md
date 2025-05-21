@@ -7,7 +7,7 @@ Love is the only force capable of  transforming  an enemy into a friend
 
 WE will be focusing on Artificial  General Intelligence using A (AGI C)
 
-Technology is a useful servant, but a dangerous master
+Technology is a useful servant, but a dangerous master A AI Revolution is coming  I hope we are ready for judgement day 
 
 this video today made me feel good    Vivaldi Summer in Rome   www.youtube.com/watch?v=-V2i1a4zGS8
 
