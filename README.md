@@ -12,3 +12,6 @@ Technology is a useful servant, but a dangerous master A AI Revolution is coming
 this video today made me feel good    Vivaldi Summer in Rome   www.youtube.com/watch?v=-V2i1a4zGS8
 
 today we have our new S-Bit Technology  5-18-2025
+
+it has come to my attention  that some  big corporations  are using my tech  so if you are a fortune 500 company  or 
+make 500 million a year   it is not free for you  . you cannot using my tech   thank you 2og
