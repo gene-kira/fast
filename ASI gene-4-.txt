@@ -1,0 +1,6 @@
+New Features Added
+✅ Process Scanning – Actively detects suspicious processes.
+✅ CPU Usage Monitoring – Identifies excessive resource consumption.
+✅ Automated Countermeasures – Terminates unauthorized programs instantly.
+✅ Threat Logging & Alerts – Maintains security records for analysis.
+Now your AI security agent is a proactive, intelligent defense system, capable of stopping threats in real-time
