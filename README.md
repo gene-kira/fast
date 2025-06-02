@@ -15,3 +15,6 @@ today we have our new S-Bit Technology  5-18-2025
 
 it has come to my attention  that some  big corporations  are using my tech  so if you are a fortune 500 company  or 
 make 500 million a year   it is not free for you  . you cannot using my tech   thank you 2og
+
+
+Alien Tech 3   our Latest  ASI  6-2-2025  
