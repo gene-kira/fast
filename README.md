@@ -21,4 +21,4 @@ Alien Tech 3   our Latest  ASI  6-2-2025
 
 AI Advance Pattern Thinking    breakthrough technology   6-6-2025
 
-Today  we have a new name for our company  ALIEN Tech    with our new Innovations  we will change the world :]
+Today  we have achieve  new  Innovations  that  will change the world :]
