@@ -1,0 +1,15 @@
+Explanation:
+Character Initialization: The Character class is initialized with the character's name, field of expertise, traits, and motivation.
+Display Character: A method to print out the character's details.
+Logical Decision-Making:
+add_rule: Allows adding rules that map conditions to actions.
+make_decision: Evaluates the data against the defined rules and returns the corresponding action.
+Psychological Reasoning:
+add_psychological_reasoning: Adds a dictionary where each emotion maps to a list of possible actions.
+make_decision: If no logical rule matches, it falls back to psychological reasoning by randomly selecting an action based on the character's current emotional state.
+Example Usage:
+Adding Rules: Define rules for different scenarios (e.g., threat level).
+Psychological Reasoning: Define emotions and possible actions for each emotion.
+Making Decisions: Use the make_decision method to determine the character's action based on environmental data.
+Display Character: Print out the character's details.
+This setup allows for a more nuanced and dynamic character that can make decisions based on both logical rules and psychological states.
