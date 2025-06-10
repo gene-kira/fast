@@ -1,0 +1,16 @@
+Explanation:
+Character Class:
+
+Initialization: Sets up the character's name, field of expertise, traits, and motivation.
+Display Character: Prints out the character's details.
+Add Psychological Rule: Adds a rule for making decisions based on emotional states.
+Make Decision: First checks logical rules, then falls back to psychological reasoning if no logical rule matches.
+LogicalDecisionMaker Class:
+
+Initialization: Sets up an empty dictionary of rules.
+Add Rule: Adds a new rule to the decision-making system.
+Make Decision: Iterates through the rules and returns the action for the first matching condition.
+Example Usage:
+Character Creation: Creates a character similar to Hannibal Lecter with specific traits and motivation.
+Adding Rules: Adds both logical and psychological rules.
+Making Decisions: Demonstrates how the character makes decisions based on provided data, using both logical and psychological reasoning.
