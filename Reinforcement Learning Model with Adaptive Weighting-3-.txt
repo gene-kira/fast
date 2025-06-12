@@ -1,0 +1,8 @@
+Explanation
+AdaptiveRL Class: This class defines the neural network model with adaptive weighting.
+RLTrainer Class: This class handles the training loop for a single RL agent, including action selection, experience storage, and weight updates.
+MultiAgentRLTrainer Class: This class manages multiple RL agents and includes methods for training, sharing information, and selecting actions.
+Training Loop: The main training loop simulates the environment and trains the multi-agent system over 200 iterations.
+Visualization Functions: These functions plot the reward trend and weight evolution of a specified agent.
+Running the Code
+To run the code, you can copy and paste it into a Python environment or Jupyter notebook. The training loop will simulate the reinforcement learning process, and the visualization functions will provide insights into how the rewards and weights evolve over time. Enjoy! 🚀
