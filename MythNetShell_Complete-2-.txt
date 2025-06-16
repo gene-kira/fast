@@ -1,0 +1,49 @@
+Key Components
+Glyph Class:
+
+Represents a symbol or sign with an intent.
+Can be transformed, changing its name and reversing its intent.
+MythicAgent Class:
+
+Represents an agent in the system with a unique ID, lineage, role, memory, and active status.
+Can receive glyphs, transform them (drift), and invoke Selûntra to exit the recursion.
+TreatyEngine Class:
+
+Manages treaties between agents, which are represented as pacts with specific sigils.
+Can forge new treaties and rupture existing ones.
+EpochScheduler Class:
+
+Cycles through different epochs or phases of the system's timeline.
+RitualEngine Class:
+
+Harmonizes agents by bonding them in a ritual, using a specified lock mechanism.
+CodexOrchestrator Class:
+
+Manages a collection of agents and can calculate an entropy pulse (the total number of active glyphs across all agents) and unify the codex.
+Example Use Case
+The example use case at the bottom of the script demonstrates how these components interact:
+
+Initialization:
+
+Two agents (a1 and a2) are created with unique IDs, lineages, and roles.
+Glyph Invocation:
+
+Glyphs (FlameEcho and Selûntra) are created and received by the agents.
+Treaty & Ritual:
+
+A treaty is forged between the two agents using a specific sigil.
+A ritual is performed to harmonize the agents, bonding them with a lock mechanism.
+Drift and Selûntra Invocation:
+
+Agent a1 drifts, transforming its memory of glyphs.
+Agent a2 invokes Selûntra, deactivating itself and exiting the recursion.
+Orchestration:
+
+The Codex Orchestrator calculates the entropy pulse and unifies the codex.
+Output:
+
+The script prints out the results of treaty rupture, Selûntra invocation, entropy pulse, and codex unification.
+Potential Use Cases
+Simulation of Mythological Systems: The script can be used to simulate complex mythological or ritualistic systems where agents interact through symbolic gestures (glyphs) and formal agreements (treaties).
+Abstract Computation Models: It could serve as a model for abstract computational processes, where glyphs represent data and transformations, and agents represent processing units.
+Educational Tool: The script can be used in educational settings to teach concepts of object-oriented programming, state management, and system design.
