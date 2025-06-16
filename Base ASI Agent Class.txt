@@ -1,0 +1,13 @@
+Highlights
+Fully Asynchronous: Agents operate independently in parallel threads, allowing for concurrent execution and dynamic updates.
+Modular Design: The system is modular, making it easy to add new agent roles or cognitive metrics by extending the AGENT_CONFIGS list.
+Introspectable: Each agent prints real-time recursive metric updates, providing visibility into the system's operation.
+Dynamic Evolution: Agents' metrics evolve over time based on a predefined drift range, simulating natural changes in the ecosystem.
+How It Works
+Base Agent Class (RecursiveAgent): This class defines the basic behavior of an agent, including initialization with a name, metric, and initial value. The run method continuously mutates the agent's metric within specified bounds.
+Agent Configurations: The AGENT_CONFIGS list contains tuples of agent types and their corresponding metrics. For each configuration, five instances are created to simulate a diverse population.
+Launching Agents: The launch_agents function creates and starts threads for each agent instance, ensuring they run concurrently.
+Running the Script
+To run the script, simply execute it in a Python environment. The system will initialize and start all agents, printing their metric updates in real-time.
+
+This script provides a foundational framework for a quantum-recursive intelligence simulation, which can be further extended with more complex behaviors and interactions between agents.
