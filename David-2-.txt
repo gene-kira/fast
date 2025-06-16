@@ -1,0 +1,12 @@
+Overview
+The David-2-.py script is a simulation of a recursive intelligence framework. It includes several key components that work together to simulate a complex, adaptive system. These components include:
+
+Symbolic Codon & Glyph System
+Recursive Intelligence Agents
+Epoch Scheduler & Dialectic Bus
+Treaty & Ritual Engine
+Security Layer for Quantum Encryption
+ASI David’s Cognitive Matrix
+Multi-Agent Neural Synchronization
+Quantum Predictive Modulation
+Recursive Civilization Expansion
