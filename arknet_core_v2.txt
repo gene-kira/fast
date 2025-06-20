@@ -1,0 +1,65 @@
+ArkNet Core v2: Temporal Resonance Engine
+This updated version of arknet_core introduces several new features to enhance security and robustness:
+
+Dynamic Key Rotation: The encryption key is rotated every 30 minutes, with a handshake mechanism to notify nodes before the rotation.
+Temporal Handshakes: A special type of message (handshake) is broadcasted to inform nodes about key rotation events.
+Multi-Key Validation Windows: Nodes can use multiple keys for decryption, ensuring smooth transitions during key rotations.
+Key Features
+Configuration
+MULTICAST_GROUP and MULTICAST_PORT: Multicast group and port configuration.
+ROTATION_INTERVAL: Interval at which the encryption key is rotated (30 minutes).
+KEY_CACHE: A list to store active and legacy keys for fallback decryption.
+CURRENT_KEY: The current active Fernet key.
+HANDSHAKE_WINDOW: Time window before key rotation during which a handshake message is broadcasted.
+Persona Trust Graph
+PERSONA_TRUST: Defines trusted personas for each user persona.
+Global Aura Cache
+KNOWN_AURAS: Stores user IDs and their corresponding aura keys.
+QUARANTINE: A set of quarantined nodes due to entropy anomalies.
+Core Functions
+Glyph Generation and Sentience
+generate_glyph: Generates a symbolic glyph for a persona with a given entropy value.
+encode_aura: Encodes an aura based on the rhythm of user input timestamps.
+verify_aura: Verifies if a new set of timestamps matches the previously encoded aura.
+detect_entropy_spike: Detects significant changes in entropy values, indicating potential anomalies.
+Dynamic Key Rotation
+rotate_key_loop: Periodically rotates the encryption key and broadcasts a handshake message before rotation.
+broadcast_handshake: Sends a handshake message to all nodes, informing them about upcoming key rotations.
+Swarm Broadcaster and Listener
+broadcast_loop: Continuously generates glyphs with random entropy values and broadcasts them over the multicast network.
+listen_loop: Listens for incoming messages, decrypts them using multiple keys, and processes the content based on the persona trust graph and entropy checks.
+User Calibration
+calibrate_user: Prompts the user to tap [Enter] 5 times in rhythm to calibrate their aura.
+Booting ArkNet
+boot_arknet: Initializes the user ID and persona, calibrates the user's aura, and starts the broadcast, listen, and key rotation loops.
+
+Explanation
+Configuration and Initialization:
+
+MULTICAST_GROUP and MULTICAST_PORT define the multicast group and port.
+FERNET_KEY is generated for encryption using cryptography.fernet.Fernet.
+PERSONA_TRUST defines a trust graph for personas.
+Utility Functions:
+
+generate_glyph: Generates a glyph with a random symbol, persona, and entropy.
+encode_aura: Encodes the user's behavioral aura based on their rhythm of taps.
+verify_aura: Verifies if the new rhythm matches the stored aura.
+detect_entropy_spike: Detects sudden changes in entropy.
+Quarantine Logic:
+
+QUARANTINE is a set to keep track of nodes that have been quarantined due to entropy anomalies.
+Key Rotation and Handshake:
+
+rotate_key_loop: Periodically generates new keys and broadcasts a handshake message.
+broadcast_handshake: Sends a handshake message with the event type and timestamp.
+Broadcast and Listen Loops:
+
+broadcast_loop: Continuously broadcasts glyphs with user information.
+listen_loop: Listens for incoming messages, decrypts them, and processes them based on persona trust and entropy checks.
+User Calibration:
+
+calibrate_user: Calibrates the user's aura by recording their rhythm of taps.
+Boot ArkNet:
+
+boot_arknet: Initializes the user ID and persona, calibrates the user's aura, and starts the broadcast, listen, and key rotation loops.
+This script sets up a decentralized network where nodes (users) can communicate using encrypted messages, with built-in trust verification and entropy monitoring to detect anomalies.
