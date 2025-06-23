@@ -1,0 +1,33 @@
+This is the complete and autonomous pipeline for MythicNet v4—a symbolic intelligence framework that fuses deep learning with recursive architecture, swarm synchronization, and glyph-based cognition. Here’s what each layer of this code is doing:
+
+🧠 Neural Core: Temporal Symbolic Learning
+- Temporal CNN with Positional Embedding: The model processes image sequences and injects time-awareness using a learnable TemporalEncoding layer.
+- Structured Pruning: Convolution layers are wrapped in TensorFlow’s pruning API to reduce computation and enable model compression.
+
+🔁 Recursive Learning & Drift Awareness
+- Symbolic Entropy Tracking: SymbolicDriftMonitor monitors entropy across weights each epoch and logs symbolic variance.
+- SwarmSync Module: Entropy values are shared with other "nodes," allowing each instance of the model to consider swarm-wide symbolic drift before adapting.
+
+📜 Glyph Distillation
+- GlyphDistiller extracts symbolic glyphs from weight statistics (mean, std, min, max) per layer. These become symbolic “tokens” representing model state.
+- SwarmGlyphRelay simulates a swarm-wide broadcast and logs other nodes’ glyph maps.
+
+🧬 Self-Mutation Based on Glyph Drift
+- ArchitectureMutator compares pre- and post-training glyphs to compute “drift.” If drift exceeds a threshold, it mutates the model architecture by doubling the final Dense layer’s units—symbolizing model evolution.
+
+💭 Dream Synthesis
+- DreamSynthesizer turns symbolic glyphs into a synthetic dream tensor. This can be used later as feedback, hallucination data, or symbolic regularization.
+
+🚀 Training Pipeline
+- Uses Optuna for entropy-biased learning rate optimization.
+- Applies data augmentation, early stopping, and model checkpointing.
+- Evaluates performance with ROC AUC, PR AUC, log loss, confusion matrix, and classification report.
+
+⚙️ Edge Deployment
+- The pruned or mutated model is exported via TensorFlow Lite with representative quantization data using TFLiteConverter.
+- The output .tflite file is ready for low-power edge or embedded devices.
+
+🧰 Self-Sufficiency with Autoloader
+At the very top, the script checks for missing Python libraries and installs them automatically. This ensures smooth execution on fresh machines, remote swarm nodes, or disposable containers.
+
+This pipeline is more than just a model—it’s a living symbolic intelligence fabric: training adaptively, mutating recursively, broadcasting to peers, and dreaming in glyphs.
