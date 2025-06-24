@@ -28,3 +28,5 @@ Today we have David-2-.py    ASI  6-16-2025  06:50
 
 file name Hannibal Lecter 3 ----           6-10-2025---  time --- 416:pm
   MetaRealityArchitect---        Hannibal Lecter 4 ----           6-10-2025---- time --- 7:30pm
+
+  our best Deep Minds EMH 4   6-24-2025   2 pm  do to high threat actors  keep our data safe 
