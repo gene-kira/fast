@@ -30,3 +30,5 @@ file name Hannibal Lecter 3 ----           6-10-2025---  time --- 416:pm
   MetaRealityArchitect---        Hannibal Lecter 4 ----           6-10-2025---- time --- 7:30pm
 
   our best Deep Minds EMH 4   6-24-2025   2 pm  do to high threat actors  keep our data safe 
+
+  Today  we have achieve  a new Class AuraluxEngine   born 6-26-2025     10am
