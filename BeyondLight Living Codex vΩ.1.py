@@ -193,4 +193,33 @@ class BeyondLight:
 
 # ✨ Invocation Gateway
 def run_cod
+# ✨ Invocation Gateway
+def run_codex(concept):
+    bl = BeyondLight()
+    codex = bl.invoke(concept)
+    
+    # Print Oracle's message
+    oracle = Oracle()
+    print(oracle.speak(codex))
+    
+    # Draw the Chronoglyph
+    chrono = Chronoglyph(
+        artifact_id=codex["Artifact"].split('\n')[0].split('::')[-1],
+        lineage=codex["Lineage"],
+        entropy=codex["Entropy"],
+        frequencies=codex["Resonance"]
+    )
+    GlyphRenderer().draw_chronoglyph(chrono)
+    
+    # Optionally, visualize the molecule
+    from rdkit.Chem import Draw
+    mol = codex["Molecule"]
+    img = Draw.MolToImage(mol)
+    img.show()
+    
+    return codex
 
+# Example usage
+if __name__ == "__main__":
+    concept = "origin"
+    result = run_codex(concept)
