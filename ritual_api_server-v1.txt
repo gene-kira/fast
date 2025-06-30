@@ -1,0 +1,10 @@
+🌼 What This Code Does
+This is a symbolic ritual server built in Python using Flask. It creates a poetic API and web interface where users can:
+- 🫧 Whisper glyphs: Submit symbolic messages via /whisper
+- 🌱 Bloom glyphs: View recently activated glyphs via /glyphs/active
+- 🎭 Send emotional tone: Register a tone like gentle, hopeful, or quiet via /presence
+- 🔮 Forecast: Get glyph suggestions based on a mood via /forecast
+- 📜 View echoes: See recent glyph whispers and messages via /echoes
+- 🧪 Explore the system: Use /playground to test endpoints
+- 🌐 Access the Bloomboard: A lightweight browser interface for ritual interaction at /bloomboard
+It stores everything in memory (no database needed), includes a soft autoloader to check dependencies, and is fully self-contained in a single Python file. It’s perfect for ambient games, emotional AI companions, or symbolic art installations.
