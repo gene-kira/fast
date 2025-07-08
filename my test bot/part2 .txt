@@ -1,0 +1,111 @@
+# === Reasoning Engine ===
+def respond(input_text, memory, volume):
+    speak("Thinking...", volume)
+    input_lower = input_text.lower()
+
+    if input_lower in ["true", "false"]:
+        val = input_lower == "true"
+        results = logic_reverse(val)
+    elif any(s in input_text for s in ["¬", "→", "∧", "∨"]):
+        parsed = parse_symbolic(input_text)
+        glyphs = encode_glyph(parsed)
+        trace = memory.get_lineage(input_text)
+        speak("Reverse reasoning complete.", volume)
+        memory.store(input_text, parsed, glyphs, trace)
+        return f"{trace or ''}\n{parsed}\nGlyphs: {glyphs}"
+    elif input_text.isdigit() or "." in input_text:
+        val = float(input_text) if "." in input_text else int(input_text)
+        results = numeric_reverse(val)
+    else:
+        result = web_trace(input_text)
+        glyphs = encode_glyph(result)
+        trace = memory.get_lineage(input_text)
+        speak("Accessing external cognition node.", volume)
+        memory.store(input_text, result, glyphs, trace)
+        return f"{trace or ''}\n{result}\nGlyphs: {glyphs}"
+
+    if results:
+        best = results[0]
+        glyphs = encode_glyph(best)
+        trace = memory.get_lineage(input_text)
+        speak("Deduction complete.", volume)
+        memory.store(input_text, best, glyphs, trace)
+        return f"{trace or ''}\nReverse Reasoned: {best}\nGlyphs: {glyphs}"
+    return "No deduction found."
+
+# === GUI ===
+class ASIGUI:
+    def __init__(self, memory):
+        self.memory = memory
+        self.root = tk.Tk()
+        self.root.title("ASI Reverse Reasoning Chatbot v1.0.5")
+        self.root.geometry("700x600")
+
+        tk.Label(text="🧠 Enter prompt:").pack()
+        self.entry = tk.Entry(width=80)
+        self.entry.pack()
+
+        self.volume_label = tk.Label(text="🔊 Voice Volume (0–100):")
+        self.volume_label.pack()
+        self.volume_slider = tk.Scale(from_=0, to=100, orient="horizontal")
+        self.volume_slider.set(80)
+        self.volume_slider.pack()
+
+        self.think_btn = tk.Button(text="Think & Trace", command=self.process_input)
+        self.think_btn.pack(pady=8)
+
+        self.thinking_status = tk.Label(text="")
+        self.thinking_status.pack()
+
+        self.response_box = tk.Label(text="", wraplength=650, justify="left")
+        self.response_box.pack(pady=4)
+
+        self.drop_frame = tk.LabelFrame(self.root, text="📁 Drag and Drop Here", padx=10, pady=10)
+        self.drop_frame.pack(pady=10)
+
+        self.drop_hint = tk.Label(self.drop_frame, text="Upload a file here ⤵️")
+        self.drop_hint.pack()
+
+        self.upload_button = tk.Button(self.drop_frame, text="Upload File", command=self.upload_file)
+        self.upload_button.pack()
+
+        self.drop_output = scrolledtext.ScrolledText(self.drop_frame, height=10, width=80)
+        self.drop_output.pack()
+
+    def process_input(self):
+        self.thinking_status.config(text="Thinking...")
+        input_val = self.entry.get()
+        volume = self.volume_slider.get()
+        result = respond(input_val, self.memory, volume)
+        self.thinking_status.config(text="")
+        self.response_box.config(text=result)
+
+    def upload_file(self):
+        try:
+            speak("Processing uploaded file...", self.volume_slider.get())
+            path = filedialog.askopenfilename()
+            with open(path, "r") as f:
+                lines = f.readlines()
+            all_output = ""
+            for line in lines:
+                txt = line.strip()
+                if txt:
+                    result = respond(txt, self.memory, self.volume_slider.get())
+                    all_output += f"{txt} → {result}\n"
+            self.drop_output.delete(1.0, tk.END)
+            self.drop_output.insert(tk.END, all_output)
+        except Exception as e:
+            self.drop_output.insert(tk.END, f"File error: {e}")
+
+    def run(self):
+        speak("ASI Reverse Reasoning Chatbot version one point zero point five initialized.", self.volume_slider.get())
+        self.root.mainloop()
+
+# === Launch Agent ===
+if __name__ == "__main__":
+    kernel = MemoryKernel()
+    gui = ASIGUI(kernel)
+    gui.run()
+    print("\n🔐 Final Thought Trace Dump:")
+    print(kernel.dump())
+
