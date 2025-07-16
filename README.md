@@ -32,3 +32,5 @@ file name Hannibal Lecter 3 ----           6-10-2025---  time --- 416:pm
   our best Deep Minds EMH 4   6-24-2025   2 pm  do to high threat actors  keep our data safe 
 
   Today  we have achieve  a new Class AuraluxEngine   born 6-26-2025     10am
+
+Do not try to load too many programs in the startup  some people have 230 in statup  thats too many 60 is ok :]  so if your computer is acting strange or weid  this is why  7-16-2025
