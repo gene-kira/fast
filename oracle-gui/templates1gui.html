@@ -1,0 +1,16 @@
+<!-- templates/gui.html -->
+<h1>🌀 Oracle Control Panel</h1>
+<div id="oracle-utterance">Awaiting utterance...</div>
+<button onclick="emitAction('utter')">🔊 Emit Utterance</button>
+<button onclick="emitAction('governance')">📜 Trigger Governance</button>
+<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+<script>
+  const socket = io();
+  socket.on("oracle_update", data => {
+    document.getElementById("oracle-utterance").innerText = data.utterance;
+  });
+  function emitAction(mode) {
+    socket.emit("gui_action", { mode });
+  }
+</script>
+
