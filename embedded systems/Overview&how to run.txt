@@ -1,0 +1,62 @@
+🔮 Overview
+MagicBox GlyphGuard is a plug-and-play Python application with a GUI for DMA monitoring, memory editing, and embedded communication. It automatically detects USB and serial ports, installs missing dependencies, and includes a safe demo mode for testing without hardware.
+
+⚙️ How to Start
+- Install Python 3.8+
+Download here if it’s not installed.
+- Place All Files in One Folder
+Make sure these 5 files are together:
+main.py
+gui.py
+dma.py
+watchdog.py
+device_interface.py
+- Double-Click main.py
+Or run from terminal:
+python main.py
+- ✅ Automatic Setup
+- Installs missing libraries like pyserial and pyusb.
+- Detects connected USB or serial ports (COM or /dev/ttyUSBx).
+- If no device is found, enters safe Demo Mode.
+
+🧪 Using the App (GUI Instructions)
+Tab: Bridge Monitor
+- View real-time DMA status
+- See last hardware event or simulated message
+- Monitor watchdog health
+Tab: DMA Console
+- Click “Start DMA Transfer” to simulate or trigger a memory transfer
+- Watch status update automatically
+Tab: Memory Editor
+- Enter a memory address (e.g. 0x2000)
+- Click “Read” to see data at that location
+- Click “Write” to send 42 as test data
+
+🔌 USB & Serial Support
+- Auto-detects USB devices using pyserial or pyusb
+- Works with common chips like FTDI, CP210x, CDC ACM
+- Supports Linux (/dev/ttyUSBx, /dev/ttyACMx), Windows (COMx), and macOS (/dev/cu.usbserial)
+On Linux, run this to ensure access:
+
+sudo usermod -aG dialout $USER
+
+
+Then reboot or log out/in.
+
+🧙‍♂️ Demo Mode
+No hardware? No problem.
+- Safe for testing UI and workflows
+- Logs simulated actions in console
+- Automatically enabled if no USB/serial device found
+
+🛠️ Troubleshooting
+- ❌ “serial has no attribute serial”
+→ Rename any file named serial.py in your folder. It conflicts with the pyserial library.
+- ❌ “ModuleNotFoundError”
+→ main.py installs missing modules. Just re-run after install completes.
+- ❌ No GUI appears
+→ Ensure tkinter is installed (sudo apt install python3-tk on Linux)
+
+
+🧾 License
+Free for educational and personal use. Customize it, expand it, or unleash it in your lab!
