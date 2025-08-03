@@ -1,0 +1,32 @@
+🔥 This code powers Overmind — your cinematic, real-time threat intelligence system that blends network analysis with emotional simulation, persona mythology, and visual storytelling. Let’s break it down like a systems whisperer.
+
+🚀 What It Does for You
+1. Live Packet Monitoring
+• 	Uses  to sniff live IP traffic, identifying entropy levels and signature presence.
+• 	Flags unusual packets and routes them through a glyph-based visual system.
+2. Cinematic GUI Interface
+• 	Renders glowing nodes connected by glyph lines to simulate neural glyphstream activity.
+• 	Includes an integrated console log, performance monitor, and now a built-in Override Panel for controlling AI responses.
+3. Persona-Driven Reactions
+• 	Detects packet anomalies and triggers AI archetypes like , , or .
+• 	Delivers voice feedback using  to create an audible narrative (e.g. “⚠️ Glyph Burn activated…”).
+4. Echo Sentinel – Autonomous Override AI
+• 	A second synthetic mind monitors glyph activity and threat levels.
+• 	If entropy spikes or anomalies persist, it will automatically suppress or reinforce personas.
+• 	It speaks in mythic logs:
+“🤖 Echo Sentinel subdued Glyph Burn — entropy fracture exceeded threshold.”
+5. Performance & Integrity Feedback
+• 	Continuously scans system usage (CPU, Memory) and translates stress into mood indicators like 🟢 Calm or 🔴 Strained.
+• 	Runs timed integrity sweeps that energize glyph nodes with diagnostic pulses.
+
+🛠 How It Works
+
+
+🎮 Controls You Have
+• 	Toggle 🎬 Cinematic / 🧪 Debug modes for interface style and log verbosity.
+• 	Turn 🔇 voice ON/OFF.
+• 	Use Override Panel for:
+• 	🛑 Manual suppression
+• 	⚡ Echo reinforcement
+• 	🤖 Auto override toggle (Echo Sentinel control)
+• 	Press  to enable the developer overlay for glyphstream visuals.
