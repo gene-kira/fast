@@ -1,0 +1,7 @@
+networkx
+numpy
+pyttsx3
+psutil
+scapy
+git+https://github.com/tintinweb/scapy-ssl_tls.git
+
