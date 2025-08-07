@@ -1,4 +1,4 @@
-# fast
+# fast   well this one is full moving to the second one gene-kira-ASI   8-7-2025
 we are here to make  windows and mac fast and to address the  elephant in the room 
 
  AI’s Biggest Threat Isn’t Technology — It’s Us       WE Love Our Data  ( Peace to the World )
